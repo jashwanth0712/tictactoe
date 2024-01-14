@@ -185,8 +185,9 @@ def open_all_matches(table_instance):
     else:
         print("No matches found.")
 
-def open_existing_match(table_instance):
-    match_id = input("Enter the match ID to open: ")
+def open_existing_match(table_instance , match_id = None):
+    if(match_id is None):
+        match_id = input("Enter the match ID to open: ")
     table_instance.cursor.execute('SELECT * FROM tictactoe WHERE matchid = ?;', (match_id,))
     existing_match = table_instance.cursor.fetchone()
 
@@ -205,6 +206,7 @@ def open_existing_match(table_instance):
             fill_boxes(table_instance, match_id, 'player1')
 
             winner = table_instance.check_winner(board_state)
+            print("------- ------------------------------attempt p1-----------------------------------"+str(winner))
             if winner:
                 print(f"\nCongratulations! {winner} wins!")
                 table_instance.end_match(match_id, winner)
@@ -213,6 +215,8 @@ def open_existing_match(table_instance):
             fill_boxes(table_instance, match_id, 'player2')
 
             winner = table_instance.check_winner(board_state)
+            print("-------------------------------------attempt p2-----------------------------------"+str(winner))
+
             if winner:
                 print(f"\nCongratulations! {winner} wins!")
                 table_instance.end_match(match_id, winner)
@@ -234,31 +238,13 @@ if __name__ == "__main__":
         print("4. Show Leaderboard")
         print("5. Exit")
 
-        choice = input("Enter your choice (1, 2, 3, 4, or 5): ")
+        choice = input("Enter your choice : ")
         if(choice in ['1','3','4','5']):
             clear_screen()  # Clear the terminal screen
 
         if choice == '1':
             match_id = create_new_match(tictactoe_table)
-
-            while True:
-                board_state = tictactoe_table.get_board_state(match_id)
-                print("\nCurrent Board State:")
-                print_board(board_state)
-
-                fill_boxes(tictactoe_table, match_id, 'player1')
-
-                winner = tictactoe_table.check_winner(board_state)
-                if winner:
-                    print(f"\nCongratulations! {winner} wins!")
-                    break
-
-                fill_boxes(tictactoe_table, match_id, 'player2')
-
-                winner = tictactoe_table.check_winner(board_state)
-                if winner:
-                    print(f"\nCongratulations! {winner} wins!")
-                    break
+            open_existing_match(tictactoe_table,match_id)
 
         elif choice == '2':
             open_existing_match(tictactoe_table)
