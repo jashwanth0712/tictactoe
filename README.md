@@ -1,5 +1,5 @@
 # Tic Tac Toe Game 
-![](https://github.com/jashwanth0712/tictactoe/blob/main/images/image1.png?raw=true)
+![](https://github.com/jashwanth0712/tictactoe/blob/main/images/tictactoe_demo.gif?raw=true)
 ## Installation
 1. **Clone the Repository:**
    ```bash
