@@ -135,7 +135,7 @@ class TicTacToeTable:
                 match_id, player1, player2, match_status = match[0], match[2], match[3], "Live" if match[15] is None else match[15] + " won"
                 print("{:<10} {:<20} {:<20} {:<15}".format(str(match_id), player1, player2, match_status))
         else:
-            print("No matches found.")
+            print(self.print_colored("No matches found.","red"))
 
     def open_existing_match(self, match_id=None):
         if match_id is None:
@@ -147,7 +147,7 @@ class TicTacToeTable:
             print("\nExisting Match Details:")
 
             if existing_match[15] is not None:
-                print(f"\nMatch with ID {match_id} has already ended. {existing_match[15]} won!")
+                print(self.print_colored(f"\nMatch with ID {match_id} has already ended. {existing_match[15]} won!",'green'))
                 return
             while True:
                 board_state = self.get_board_state(match_id)
@@ -156,28 +156,25 @@ class TicTacToeTable:
                 board_state = self.get_board_state(match_id)
 
                 winner = self.check_winner(board_state)
-                print("------- ------------------------------attempt p1-----------------------------------" + str(
-                    winner))
+               
                 if winner:
                     self.end_match(match_id, winner)
-                    print(f"\nCongratulations! {winner} wins!")
+                    print(self.print_colored(f"\nCongratulations! {winner} wins!","green"))
                     break
 
                 self.fill_boxes(match_id, 'player2')
                 board_state = self.get_board_state(match_id)
 
                 winner = self.check_winner(board_state)
-                print(
-                    "-------------------------------------attempt p2-----------------------------------" + str(
-                        winner))
+               
 
                 if winner:
                     self.end_match(match_id, winner)
-                    print(f"\nCongratulations! {winner} wins!")
+                    print(self.print_colored(f"\nCongratulations! {winner} wins!","green"))
                     break
 
         else:
-            print(f"Match with ID {match_id} not found.")
+            print(self.print_colored(f"Match with ID {match_id} not found.","red"))
 
     def fill_boxes(self, match_id, player):
         board_state = self.get_board_state(match_id)
