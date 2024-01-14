@@ -1,7 +1,6 @@
-# Tic Tac Toe Game Readme
-
+# Tic Tac Toe Game 
+![](https://github.com/jashwanth0712/tictactoe/blob/main/images/image1.png?raw=true)
 ## Installation
-
 1. **Clone the Repository:**
    ```bash
    git clone https://github.com/jashwanth0712/tictactoe.git
@@ -17,6 +16,7 @@
    python tictactoe.py
    ```
    This will start the Tic Tac Toe game. Follow the on-screen instructions to play the game, create new matches, and view the leaderboard.
+![](https://github.com/jashwanth0712/tictactoe/blob/main/images/image2.png?raw=true)
 
 ## Database Details
 
