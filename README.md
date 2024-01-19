@@ -1,4 +1,4 @@
-# Tic Tac Toe Game 
+# Tic Tac Toe Game using python and sql
 ![](https://github.com/jashwanth0712/tictactoe/blob/main/images/tictactoe_demo.gif?raw=true)
 ## Installation
 1. **Clone the Repository:**
